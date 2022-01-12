@@ -1,0 +1,10 @@
+name: TempFly
+version: '${version}'
+main: me.rerere.tempfly.TempFly
+author: RE
+description: temp fly plugin
+depend:
+  - PlaceholderAPI
+commands:
+  tempfly:
+    description: temp fly command
