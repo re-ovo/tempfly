@@ -4,6 +4,7 @@ import me.rerere.tempfly.TempFlyPlugin
 import me.rerere.tempfly.command.SubCommand
 import me.rerere.tempfly.locale
 import me.rerere.tempfly.util.color
+import me.rerere.tempfly.util.sync
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 import org.bukkit.command.ConsoleCommandSender
@@ -17,6 +18,12 @@ class PayCommand : SubCommand(
     description = "向其他玩家赠送时长"
 ) {
     override fun execute(sender: CommandSender, args: Array<String>) {
+        if(!Bukkit.isPrimaryThread()){
+            sync {
+                execute(sender, args)
+            }
+            return
+        }
         if(args.size < 2) {
             sender.sendMessage("&c参数长度错误！".color())
             return
@@ -43,7 +50,9 @@ class PayCommand : SubCommand(
                 sender.sendMessage(
                     locale("pay_send").replace("%player%", target.name).replace("%duration%", duration.toString()).color()
                 )
-                it.sendMessage(locale("pay_receive").replace("%from%", sender.name).replace("%duration%", duration.toString()).color())
+                it.sendMessage(
+                    locale("pay_receive").replace("%from%", sender.name).replace("%duration%", duration.toString()).color()
+                )
             } ?: kotlin.run {
                 sender.sendMessage(locale("not_online").color())
             }

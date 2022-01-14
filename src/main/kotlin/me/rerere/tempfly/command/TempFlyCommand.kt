@@ -1,6 +1,7 @@
 package me.rerere.tempfly.command
 
 import me.rerere.tempfly.TempFlyPlugin
+import me.rerere.tempfly.command.subcommands.BalCommand
 import me.rerere.tempfly.command.subcommands.PayCommand
 import me.rerere.tempfly.command.subcommands.ReloadCommand
 import me.rerere.tempfly.command.subcommands.SetCommand
@@ -12,6 +13,7 @@ import org.bukkit.command.TabCompleter
 
 class TempFlyCommand : CommandExecutor, TabCompleter {
     private val subCommands = listOf(
+        BalCommand(),
         PayCommand(),
         SetCommand(),
         ReloadCommand()

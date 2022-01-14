@@ -7,6 +7,7 @@ import me.rerere.tempfly.util.*
 import net.md_5.bungee.api.ChatMessageType
 import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.Bukkit
+import org.bukkit.Sound
 import org.bukkit.block.BlockFace
 import org.bukkit.entity.Player
 import java.util.*
@@ -110,6 +111,10 @@ class PlayerDataManager {
                                     PlaceholderAPI.setPlaceholders(it, TempFlyPlugin.config.getString("setting.actionbar.format")?.color() ?: "")
                                 )
                             )
+                        }
+
+                        if(playerData.time <= 5){
+                            player.playSound(player.location, Sound.BLOCK_NOTE_BLOCK_BASS, 1f,1f)
                         }
 
                         if(playerData.time == 0L){
