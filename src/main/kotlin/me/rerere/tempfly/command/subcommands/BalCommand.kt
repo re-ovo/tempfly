@@ -3,6 +3,7 @@ package me.rerere.tempfly.command.subcommands
 import me.rerere.tempfly.TempFlyPlugin
 import me.rerere.tempfly.command.SubCommand
 import me.rerere.tempfly.util.color
+import me.rerere.tempfly.util.formatToString
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
@@ -23,7 +24,7 @@ class BalCommand : SubCommand(
         if(target.hasPermission("tempfly.infinite")){
             balance += "&7(无限时长)"
         }
-        sender.sendMessage("&a玩家飞行时间余额: &f${TempFlyPlugin.playerDataManager.getData(target)?.time?.seconds}".color())
+        sender.sendMessage("&a玩家飞行时间余额: &f${TempFlyPlugin.playerDataManager.getData(target)?.time?.seconds?.formatToString()}".color())
     }
 
     override fun giveSuggestion(slot: Int, arg: String): List<String> = when(slot){

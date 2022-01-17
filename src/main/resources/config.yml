@@ -73,3 +73,8 @@ messages:
   not_online: '&c玩家不在线!'
   pay_send: '&a你赠送了玩家 %player% 飞行时间: &f%duration%'
   pay_receive: '&a玩家 %from% 赠送了你飞行时间: &f%duration%'
+  time_format:
+    second: '秒'
+    minute: '分'
+    hour: '时'
+    day: '天'

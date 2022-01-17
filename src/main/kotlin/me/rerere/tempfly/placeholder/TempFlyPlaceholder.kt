@@ -2,6 +2,7 @@ package me.rerere.tempfly.placeholder
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion
 import me.rerere.tempfly.TempFlyPlugin
+import me.rerere.tempfly.util.formatToString
 import org.bukkit.entity.Player
 import kotlin.time.Duration.Companion.seconds
 
@@ -20,7 +21,7 @@ object TempFlyPlaceholder : PlaceholderExpansion() {
                 TempFlyPlugin.playerDataManager.getData(it)?.time?.toString()
             } ?: "null"
             "time_format" -> player?.let {
-                TempFlyPlugin.playerDataManager.getData(it)?.time?.seconds?.toString()
+                TempFlyPlugin.playerDataManager.getData(it)?.time?.seconds?.formatToString()
             } ?: "null"
             else -> ""
         }
